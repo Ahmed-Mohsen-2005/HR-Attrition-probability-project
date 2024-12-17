@@ -5,18 +5,20 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import messagebox
+import os
 
-# Create the dataframe globally for testing purposes
-df = pd.DataFrame({
-    'MonthlyIncome': np.random.randint(3000, 15000, 20),
-    'MonthlyRate': np.random.randint(100, 2000, 20),
-    'DailyRate': np.random.randint(100, 500, 20),
-    'YearsAtCompany': np.random.randint(1, 20, 20),
-    'PercentSalaryHike': np.random.uniform(10, 20, 20),
-    'YearsSinceLastPromotion': np.random.randint(1, 5, 20),
-    'MaritalStatus': np.random.choice(['Single', 'Married', 'Divorced'], 20),
-    'OverTime': np.random.choice(['Yes', 'No'], 20)
-})
+# Load the CSV data
+def load_data():
+    global df
+    try:
+        df = pd.read_csv("HR-Employee-Attrition.csv")  # Load your actual CSV file here
+        print("Data loaded successfully!")
+    except Exception as e:
+        messagebox.showerror("File Load Error", f"Error loading the data: {e}")
+        df = pd.DataFrame()  # Create an empty DataFrame in case of failure
+
+# Initialize the dataframe by loading data
+load_data()
 
 # Dictionary to track whether a plot is shown or not
 plots_shown = {}
@@ -50,11 +52,17 @@ def plot_marital_overtime():
 
 # Chart 2: Bar Plot for Monthly Income vs Monthly Rate
 def plot_monthly_income_vs_rate():
-    fig, ax = plt.subplots(figsize=(8, 5))
-    ax.bar(df['MonthlyIncome'], df['MonthlyRate'], color='blue', width=2000)
-    ax.set_title('Monthly Income vs Monthly Rate')
-    ax.set_xlabel('Monthly Income')
-    ax.set_ylabel('Monthly Rate')
+    # Group data by Monthly Income range and calculate the mean of Monthly Rate for each group
+    df['IncomeRange'] = pd.cut(df['MonthlyIncome'], bins=np.arange(0, df['MonthlyIncome'].max(), 1000))
+    grouped_data = df.groupby('IncomeRange').agg({'MonthlyRate': 'mean'}).reset_index()
+
+    # Plotting the bar chart
+    fig, ax = plt.subplots(figsize=(10, 8))
+    ax.bar(grouped_data['IncomeRange'].astype(str), grouped_data['MonthlyRate'], color='blue')
+    ax.set_title('Monthly Income vs Monthly Rate (Aggregated)')
+    ax.set_xlabel('Monthly Income Range')
+    ax.set_ylabel('Average Monthly Rate')
+    ax.tick_params(axis='x', rotation=45)  # Rotate x-axis labels for better readability
     canvas = FigureCanvasTkAgg(fig, master=frame_canvas_inner)
     canvas.draw()
     canvas.get_tk_widget().pack(padx=10, pady=10)
