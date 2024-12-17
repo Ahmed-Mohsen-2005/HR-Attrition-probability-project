@@ -7,6 +7,7 @@ from scipy.stats import poisson, binom, norm, lognorm, beta, uniform, skew, kurt
 file_path = 'HR-Employee-Attrition.csv'  # Replace with your file path
 df = pd.read_csv(file_path)
 
+print('Our Probability project')
 # Display the first few rows to understand the dataset structure
 print("First few rows of the dataset:")
 print(df.head())
