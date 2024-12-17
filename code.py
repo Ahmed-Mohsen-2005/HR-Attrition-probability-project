@@ -4,23 +4,52 @@ import matplotlib.pyplot as plt
 from scipy.stats import poisson, binom, norm, lognorm, beta, uniform, skew, kurtosis, ttest_ind
 
 # 1. Load the dataset
+
 file_path = 'HR-Employee-Attrition.csv'  # Replace with your file path
 df = pd.read_csv(file_path)
-
 print('Our Probability project')
+
+
+
+
+
 # Display the first few rows to understand the dataset structure
+
 print("First few rows of the dataset:")
 print(df.head())
 
+
+
 # 2. Extract relevant columns for analysis
-age = df['Age']
-distance_from_home = df['DistanceFromHome']
+
+MaritalStatus=df['MaritalStatus']
+OverTime=df['OverTime']
 daily_rate = df['DailyRate']
 monthly_income = df['MonthlyIncome']
+MonthlyRate=df['MonthlyRate']
 years_at_company = df['YearsAtCompany']
 years_since_last_promotion = df['YearsSinceLastPromotion']
 job_satisfaction = df['JobSatisfaction']
-work_life_balance = df['WorkLifeBalance']
+YearsAtCompany=df['YearsAtCompany']
+PercentSalaryHike=df['PercentSalaryHike']
+TotalWorkingYears=df['TotalWorkingYears']
+
+
+
+
+
+#MaritalStatus  &  OverTime
+#monthly_income  &  MonthlyRate
+#daily_rate   &   MonthlyRate
+#years_at_company  &  years_since_last_promotion
+#years_at_company  &  PercentSalaryHike
+#TotalWorkingYears   &   job_satisfaction
+
+
+
+
+
+
 
 # 3. Statistical Analysis
 
