@@ -165,7 +165,7 @@ label_result.place(x=50, y=button_y + 600)
 
 # Chart Area to the left (fills remaining space)
 chart_area = tk.Frame(root, bg="gray", relief="ridge", bd=2)
-chart_area.place(x=1000, y=50, width=900, height=700)
+chart_area.place(x=800, y=50, width=700, height=700)
 
 # Run the GUI
 root.mainloop()
