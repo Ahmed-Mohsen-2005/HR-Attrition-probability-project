@@ -86,6 +86,8 @@ This is a desktop application built using Python's Tkinter library. It analyzes 
 ---
 
 ## 📷 Screenshot
+![screenshot1](screenshot1.png)
+![screenshot2](screenshot2.png)
 
 
 ---
