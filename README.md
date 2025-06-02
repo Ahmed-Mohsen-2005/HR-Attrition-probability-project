@@ -89,7 +89,13 @@ This is a desktop application built using Python's Tkinter library. It analyzes 
 ![screenshot1](screenshot1.png)
 ![screenshot2](screenshot2.png)
 
-
+---
+## 📝 Authors
+- Ahmed Mohsen (Me)
+- [@Jana-Ahmed-20005](https://github.com/Jana-Ahmed-20005)
+- [@Nour1512](https://github.com/Nour1512)
+- [@Mazen-980](https://github.com/Mazen-980)
+- Soha Essam
 ---
 
 ## 📄 License
