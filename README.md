@@ -94,5 +94,5 @@ This is a desktop application built using Python's Tkinter library. It analyzes 
 
 ## 📄 License
 
-This project is for educational and non-commercial purposes.
+This project is for educational university project purposes.
 
